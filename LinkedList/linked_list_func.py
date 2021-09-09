@@ -1,3 +1,4 @@
+import heapq
 from list_node import ListNode
 
 
@@ -34,8 +35,9 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
 
 
 def mergeKLists(lists: list[ListNode]) -> ListNode:
-    import heapq
-
+    """
+    leetcode 23: 合并K个升序链表
+    """
     if not lists:
         return None
 
@@ -61,3 +63,28 @@ def mergeKLists(lists: list[ListNode]) -> ListNode:
         p = p.next
 
     return newLinkedList.next
+
+
+def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
+    """
+    leetcode 19: 删除链表的倒数第 N 个结点
+    """
+    dummy = ListNode(0)
+    dummy.next = head
+
+    fast, slow = dummy, dummy
+
+    # fast指针先走n步
+    while n:
+        fast = fast.next
+        n -= 1
+
+    # 快慢指针一起走
+    while fast.next:
+        fast = fast.next
+        slow = slow.next
+
+    # 删除倒数第n个节点
+    slow.next = slow.next.next
+
+    return dummy.next
