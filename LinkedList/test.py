@@ -60,4 +60,47 @@ def unit_test_middle_node():
     print(from_linked_list_to_array(new_linked_list))
 
 
-unit_test_middle_node()
+def unit_test_has_cycle():
+    """
+    测试链表是否有环
+    """
+    linked_list = input("please enter linked list: ")
+    linked_list = [int(ele) for ele in linked_list.split(" ")]
+
+    test_cases = []
+    # has cycle
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, 4))
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, 2))
+
+    # no cycle
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, -1))
+
+    for test_case in test_cases:
+        print(hasCycle(test_case))
+
+
+def unit_test_detect_cycle():
+    """
+    测试链表是否有环
+    """
+    linked_list = input("please enter linked list: ")
+    linked_list = [int(ele) for ele in linked_list.split(" ")]
+
+    test_cases = []
+    # has cycle
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, 4))
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, 2))
+
+    # no cycle
+    test_cases.append(from_array_to_linked_list_has_cycle(linked_list, -1))
+
+    for test_case in test_cases:
+        node = detectCycle(test_case)
+        if node:
+            print(node.val)
+        else:
+            print("no cycle")
+
+
+unit_test_has_cycle()
+unit_test_detect_cycle()

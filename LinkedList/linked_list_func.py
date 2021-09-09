@@ -104,3 +104,43 @@ def middleNode(head: ListNode) -> ListNode:
         slow = slow.next
 
     return slow
+
+
+def hasCycle(head: ListNode) -> bool:
+    """
+    leetcode 141: 判断链表是否有环
+    """
+    fast, slow = head, head
+
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+
+        if slow == fast:
+            return True
+
+    return False
+
+
+def detectCycle(head: ListNode) -> ListNode:
+    """
+    leetcode 142: 返回链表开始入环的第一个节点
+    """
+    fast, slow = head, head
+
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+
+        # 链表有环，slow从head开始，fast从相遇点开始
+        if fast == slow:
+            slow = head
+            while slow != fast:
+                slow = slow.next
+                fast = fast.next
+
+            # 快慢指针再次相遇的地方就是环的入口
+            return slow
+
+    # 链表无环
+    return None
