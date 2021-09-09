@@ -21,9 +21,11 @@ def from_array_to_linked_list_has_cycle(arr, end):
 
     n = len(linked_list)
 
+    # 造链表
     for i in range(n - 1):
         linked_list[i].next = linked_list[i + 1]
 
+    # 造环
     if end >= 0:
         linked_list[n - 1].next = linked_list[end]
 

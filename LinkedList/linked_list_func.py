@@ -1,6 +1,8 @@
 import heapq
 from list_node import ListNode
 
+# ------------------------- 1. 合并链表 ---------------------------
+
 
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
     """
@@ -64,6 +66,8 @@ def mergeKLists(lists: list[ListNode]) -> ListNode:
 
     return newLinkedList.next
 
+# ------------------------- 2. 寻找链表特定位置节点 ---------------------------
+
 
 def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
     """
@@ -105,6 +109,8 @@ def middleNode(head: ListNode) -> ListNode:
 
     return slow
 
+# ------------------------- 3. 环形链表 ---------------------------
+
 
 def hasCycle(head: ListNode) -> bool:
     """
@@ -144,3 +150,76 @@ def detectCycle(head: ListNode) -> ListNode:
 
     # 链表无环
     return None
+
+# ------------------------- 4. 相交链表 ---------------------------
+
+
+def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    """
+    leetcode 160: 相交链表
+    """
+    p1, p2 = headA, headB
+    while p1 != p2:
+        p1 = p1.next if p1 else headB
+        p2 = p2.next if p2 else headA
+    return p1
+
+
+# ------------------------- 5. 反转链表 ---------------------------
+def reverseList_recur(head: ListNode) -> ListNode:
+    """
+    反转链表：递归方法
+    """
+    if head == None:
+        return None
+
+    if head.next == None:
+        return head
+
+    newHead = reverseList_recur(head.next)
+    head.next.next = head
+    head.next = None
+
+    return newHead
+
+
+def reverseList_iter(head: ListNode) -> ListNode:
+    """
+    反转链表：迭代方法
+    """
+    pre = None
+    cur = head
+
+    while cur:
+        nxt = cur.next
+        cur.next = pre
+        pre = cur
+        cur = nxt
+
+    return pre
+
+
+def reverseBetween(head: ListNode, left: int, right: int) -> ListNode:
+    """
+    反转某区间的链表
+    """
+    global successor
+    successor = None
+
+    def reverseN(head, count):
+
+        global successor
+        if count == 1:
+            successor = head.next
+            return head
+
+        newhead = reverseN(head.next, count - 1)
+        head.next.next = head
+        head.next = successor
+
+        return newhead
+
+    if left == 1:
+        return reverseN(head, right)
+    head.next = reverseBetween(head.next, left - 1, right - 1)
+    return head

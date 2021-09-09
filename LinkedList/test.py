@@ -102,5 +102,24 @@ def unit_test_detect_cycle():
             print("no cycle")
 
 
-unit_test_has_cycle()
-unit_test_detect_cycle()
+def unit_test_reverse_list():
+    """
+    测试反转链表
+    """
+    linked_arr = input("please enter linked list: ")
+    linked_arr = [int(ele) for ele in linked_arr.split(" ")]
+    linked_list = from_array_to_linked_list(linked_arr)
+
+    new_linked_list = reverseList_recur(linked_list)
+    print(from_linked_list_to_array(new_linked_list))
+
+    linked_list = from_array_to_linked_list(linked_arr)
+    new_linked_list = reverseList_iter(linked_list)
+    print(from_linked_list_to_array(new_linked_list))
+
+    linked_list = from_array_to_linked_list(linked_arr)
+    new_linked_list = reverseBetween(linked_list, 2, 4)
+    print(from_linked_list_to_array(new_linked_list))
+
+
+unit_test_reverse_list()
