@@ -88,3 +88,19 @@ def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
     slow.next = slow.next.next
 
     return dummy.next
+
+
+def middleNode(head: ListNode) -> ListNode:
+    """
+    leetcode 876. 链表的中间结点
+    """
+    slow, fast = head, head
+
+    while fast and fast.next:
+        # 快指针走两步
+        fast = fast.next.next
+
+        # 慢指针走一步
+        slow = slow.next
+
+    return slow

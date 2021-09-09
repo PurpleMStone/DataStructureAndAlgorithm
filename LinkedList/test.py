@@ -1,6 +1,5 @@
-from linked_list_func import removeNthFromEnd
+from linked_list_func import *
 from utils import *
-from linked_list_func import mergeTwoLists, mergeKLists
 
 
 def unit_test_merge_two_lists():
@@ -49,4 +48,16 @@ def unit_test_remove_nth_from_end():
     print(from_linked_list_to_array(new_linked_list))
 
 
-unit_test_remove_nth_from_end()
+def unit_test_middle_node():
+    """
+    测试寻找单链表中间节点
+    """
+    linked_list = input("please enter linked list: ")
+    linked_list = [int(ele) for ele in linked_list.split(" ")]
+    linked_list = from_array_to_linked_list(linked_list)
+
+    new_linked_list = middleNode(linked_list)
+    print(from_linked_list_to_array(new_linked_list))
+
+
+unit_test_middle_node()
