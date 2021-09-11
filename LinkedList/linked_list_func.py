@@ -168,7 +168,7 @@ def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
 # ------------------------- 5. 反转链表 ---------------------------
 def reverseList_recur(head: ListNode) -> ListNode:
     """
-    反转链表：递归方法
+    leetcode 206: 反转链表-递归方法
     """
     if head == None:
         return None
@@ -185,7 +185,7 @@ def reverseList_recur(head: ListNode) -> ListNode:
 
 def reverseList_iter(head: ListNode) -> ListNode:
     """
-    反转链表：迭代方法
+    leetcode 206: 反转链表-迭代方法
     """
     pre = None
     cur = head
@@ -201,7 +201,7 @@ def reverseList_iter(head: ListNode) -> ListNode:
 
 def reverseBetween(head: ListNode, left: int, right: int) -> ListNode:
     """
-    反转某区间的链表
+    leetcode 92: 反转某区间的链表
     """
     global successor
     successor = None
@@ -223,3 +223,27 @@ def reverseBetween(head: ListNode, left: int, right: int) -> ListNode:
         return reverseN(head, right)
     head.next = reverseBetween(head.next, left - 1, right - 1)
     return head
+
+
+def isPalindrome(head: ListNode) -> bool:
+    """
+    判断是否是回文链表
+    """
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    
+    if fast:
+        slow = slow.next
+    
+    left = head
+    right = reverseList_iter(slow)
+
+    while right:
+        if left.val != right.val:
+            return False
+        left = left.next
+        right = right.next
+    
+    return True
