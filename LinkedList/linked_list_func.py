@@ -233,11 +233,13 @@ def isPalindrome(head: ListNode) -> bool:
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
-    
+
     if fast:
         slow = slow.next
-    
+
+    # 左半部分从头开始
     left = head
+    # 右半部分反转链表
     right = reverseList_iter(slow)
 
     while right:
@@ -245,5 +247,5 @@ def isPalindrome(head: ListNode) -> bool:
             return False
         left = left.next
         right = right.next
-    
+
     return True
