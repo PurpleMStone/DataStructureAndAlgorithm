@@ -227,7 +227,7 @@ def reverseBetween(head: ListNode, left: int, right: int) -> ListNode:
 
 def isPalindrome(head: ListNode) -> bool:
     """
-    判断是否是回文链表
+    leetcode 234: 判断是否是回文链表
     """
     slow, fast = head, head
     while fast and fast.next:
