@@ -1,3 +1,4 @@
+from list_node import *
 from linked_list_func import *
 from utils import *
 
@@ -133,6 +134,17 @@ def unit_test_is_palindrome():
     print(isPalindrome(linked_list))
 
 
-unit_test_merge_two_lists()
-unit_test_detect_cycle()
-unit_test_is_palindrome()
+def unit_test_linked_list():
+    node1 = LinkedList(1)
+    node2 = LinkedList(2)
+    node3 = LinkedList(3)
+    node1.next = node2
+    node2.next = node3
+    node, _ = remove(node1)
+    node4 = LinkedList(5)
+    node = addFirst(node, 4)
+    print(node)
+    print(from_linked_list_to_array(node))
+
+
+unit_test_linked_list()
